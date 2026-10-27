@@ -1,10 +1,15 @@
 /* ==========================================================================
-   tokens.css — the single source of truth for color, type and spacing.
-   Design system: ui-style-banded-fullbleed v1.3
-   (canonical: ../../AgentSkills/ui-style-banded-fullbleed/SKILL.md in the work vault)
+   tokens.css — the single source of truth for color, type, spacing and shape.
 
-   Copied from aiskilltrees.com, keeping only the tokens a marketing site
-   needs: no graph signals, aid levels, subject colours or elevation.
+   Site-local design (from 2026-10-27, v2). Started from
+   ui-style-banded-fullbleed v1.3, copied from aiskilltrees.com: the band
+   model, the type scale and the fonts are still that system's. Vidar then
+   asked for a friendlier marketing layout — a hero, a video, one row per
+   offer with a photo beside the text, rounded corners — so the square rule
+   and the evergreen palette are gone. See AGENTS.md, "Design".
+
+   Palette: chalkboard green with a terracotta accent, chosen to sit apart
+   from both aiskilltrees.com and the navy/blue/gold of speaker agencies.
 
    NO other stylesheet and NO page may hardcode a hex value or a font stack.
    If a value is missing, add a token here.
@@ -14,22 +19,33 @@
 
 :root {
   /* ---- Grounds ---------------------------------------------------------- */
-  --paper:         #F6F4EF;   /* default page ground — warm off-white */
-  --paper-2:       #EDEAE2;   /* alternate band, one step deeper */
-  --surface:       #FFFFFF;   /* cards */
+  --paper:         #FAF8F4;   /* default page ground — warm off-white */
+  --paper-2:       #F1EDE6;   /* alternate band, warm sand */
+  --surface:       #FFFFFF;   /* cards, header */
 
   /* ---- Ink -------------------------------------------------------------- */
-  --ink:           #1A1D1B;   /* primary text, and the dark band ground — 15.5:1 on --paper */
-  --ink-2:         #4A4F4B;   /* secondary text — 7.6:1 on --paper */
-  --ink-3:         #646964;   /* muted: captions, metadata — 5.1:1 on --paper */
-  --ink-inverse:   #F6F4EF;   /* text on --ink and --primary bands */
-  --rule:          rgba(26, 29, 27, 0.14);   /* hairline separators inside a band */
-  --rule-inverse:  rgba(246, 244, 239, 0.22);
+  --ink:           #18211E;   /* primary text, and the footer ground */
+  --ink-2:         #47504C;   /* secondary text — 7.1:1 on --primary-tint */
+  --ink-3:         #626A66;   /* muted: captions, metadata — 5.3:1 on --paper */
+  --ink-inverse:   #FAF8F4;   /* text on --ink and --primary bands */
+  --rule:          rgba(24, 33, 30, 0.12);
+  --rule-inverse:  rgba(250, 248, 244, 0.28);
 
-  /* ---- Primary ---------------------------------------------------------- */
-  --primary:        #1F6F4A;  /* deep evergreen — 6.1:1 on white, 5.6:1 on --paper */
-  --primary-strong: #16543A;  /* hover/active — 8.9:1 on white */
-  --primary-tint:   #E3EFE8;  /* pale band fill */
+  /* ---- Primary: chalkboard green ---------------------------------------- */
+  --primary:        #1E4D43;  /* hero, contact band, buttons — 9.6:1 on white */
+  --primary-strong: #153A32;  /* hover/active */
+  --primary-tint:   #E6EFEB;  /* the "Om mig" band */
+
+  /* ---- Accent: terracotta ----------------------------------------------- */
+  --accent:         #B4492A;  /* eyebrows and small marks — 5.0:1 on --paper */
+  --accent-soft:    #F4B79A;  /* the accent on --primary — 5.5:1 */
+  --accent-tint:    #F7E6DC;  /* chip fill */
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius:      14px;        /* photos, video, cards */
+  --radius-sm:   8px;         /* buttons */
+  --radius-pill: 999px;       /* chips */
+  --shadow:      0 18px 40px -18px rgba(24, 33, 30, 0.35);   /* the video frame only */
 
   /* ---- Type ------------------------------------------------------------- */
   --font-sans:  "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
@@ -48,7 +64,7 @@
   --space-band:    clamp(3rem, 8vw, 7rem);      /* vertical padding of a band */
   --space-band-lg: clamp(4.5rem, 12vw, 10rem);  /* hero and closing CTA only */
   --measure-prose: 68ch;
-  --measure-wide:  1280px;
+  --measure-wide:  1200px;
 
   --space-1: 0.5rem;
   --space-2: 1rem;

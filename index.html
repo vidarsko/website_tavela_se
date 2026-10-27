@@ -23,7 +23,7 @@
       <nav class="sitenav" aria-label="Huvudmeny">
         <a href="/#erbjudanden">Erbjudanden</a>
         <a href="/#om-mig">Om mig</a>
-        <a href="/#kontakt">Kontakt</a>
+        <a class="btn btn--primary btn--sm" href="/#kontakt">Kontakt</a>
       </nav>
     </div>
   </header>
@@ -31,83 +31,135 @@
   <main>
 
     <!--
-      The offers come first. Vidar wanted a visitor to see them straight
-      away, so there is no hero: a short intro band, then the three cards,
-      all inside the first screen on a laptop.
+      Hero, then the video, then one row per offer. Vidar asked for this on
+      2026-10-27 in place of the first version's low intro band, accepting
+      that the offers now need a scroll.
     -->
-    <section class="band intro">
+    <section class="band band--primary hero">
       <div class="band__inner">
         <p class="eyebrow">För skolor och lärare</p>
         <h1>AI i skolan, med lärandet i centrum</h1>
-        <p class="lede">Föreläsningar och workshoppar för lärarkollegier, skolledare och studiedagar.</p>
+        <p class="lede">
+          Föreläsningar och workshoppar för lärarkollegier, skolledare och studiedagar,
+          med Vidar Skogvoll från Oslo universitet.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#erbjudanden">Se erbjudandena</a>
+          <a class="btn btn--ghost" href="#kontakt">Kontakta mig</a>
+        </div>
       </div>
     </section>
 
-    <section class="band band--alt" id="erbjudanden">
+    <!--
+      The video of clips from talks and workshops is not made yet. Until it
+      is, the frame holds a still. When the file exists, replace the <img>
+      with:
+        <video controls playsinline preload="metadata" poster="/media/showreel.jpg">
+          <source src="/media/showreel.mp4" type="video/mp4">
+        </video>
+      Self-hosted on purpose: a YouTube embed would break the privacy page's
+      promise of no third-party calls besides GoatCounter.
+    -->
+    <section class="band showreel" aria-label="Video">
       <div class="band__inner">
-        <h2 class="visually-hidden">Erbjudanden</h2>
+        <div class="showreel__frame">
+          <img src="/media/showreel.jpg" width="1371" height="771"
+               alt="Vidar Skogvoll undervisar en grupp lärare framför en whiteboard.">
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="erbjudanden">
+      <div class="band__inner">
+        <div class="section-head">
+          <p class="eyebrow">Erbjudanden</p>
+          <h2>En föreläsning och två workshoppar</h2>
+        </div>
+
         <div class="offers">
 
           <article class="offer">
-            <p class="offer__kind">Föreläsning</p>
-            <h3 class="offer__title">AI och lärande</h3>
-            <p class="offer__meta">För hela kollegiet</p>
-            <p class="offer__body">
-              Hur lär vi oss egentligen, och vad händer med det när eleverna har en AI som
-              kan svara på allt? Föreläsningen bygger på kognitiv psykologi och visar när AI
-              stärker lärandet och när den tar över det tänkande eleven själv behöver göra.
-            </p>
-            <a class="btn btn--primary" href="/forelasning-ai-och-larande/">Mer information</a>
+            <div class="offer__media">
+              <img src="/media/forelasning.jpg" width="1200" height="900" loading="lazy"
+                   alt="Vidar Skogvoll vid ett bord med anteckningsblock och en mjukisrobot.">
+            </div>
+            <div>
+              <p class="offer__kind">Föreläsning</p>
+              <h3 class="offer__title">AI och lärande</h3>
+              <ul class="chips"><li>För hela kollegiet</li></ul>
+              <p class="offer__body">
+                Hur lär vi oss egentligen, och vad händer med det när eleverna har en AI som
+                kan svara på allt? Föreläsningen bygger på kognitiv psykologi och visar när AI
+                stärker lärandet och när den tar över det tänkande eleven själv behöver göra.
+              </p>
+              <a class="btn btn--primary" href="/forelasning-ai-och-larande/">Mer information</a>
+            </div>
           </article>
 
           <article class="offer">
-            <p class="offer__kind">Workshop</p>
-            <h3 class="offer__title">Färdighetsträd</h3>
-            <p class="offer__meta">2–4 timmar · ta med dator</p>
-            <p class="offer__body">
-              Ett färdighetsträd är en karta över ett ämne där varje färdighet har en färdig
-              instruktion till en AI-chatt. Ni provar träd som elev och börjar bygga ett eget
-              för något ni undervisar i.
-            </p>
-            <a class="btn btn--primary" href="/workshop-fardighetstrad/">Mer information</a>
+            <div class="offer__media">
+              <img src="/media/fardighetstrad.jpg" width="1200" height="900" loading="lazy"
+                   alt="Ett färdighetsträd i matematik, med noder för ekvationer och geometri.">
+            </div>
+            <div>
+              <p class="offer__kind">Workshop</p>
+              <h3 class="offer__title">Färdighetsträd</h3>
+              <ul class="chips"><li>2–4 timmar</li><li>Ta med dator</li></ul>
+              <p class="offer__body">
+                Ett färdighetsträd är en karta över ett ämne där varje färdighet har en färdig
+                instruktion till en AI-chatt. Ni provar träd som elev och börjar bygga ett eget
+                för något ni undervisar i.
+              </p>
+              <a class="btn btn--primary" href="/workshop-fardighetstrad/">Mer information</a>
+            </div>
           </article>
 
           <article class="offer">
-            <p class="offer__kind">Workshop</p>
-            <h3 class="offer__title">Interaktiva simuleringar</h3>
-            <p class="offer__meta">2–4 timmar · ta med dator</p>
-            <p class="offer__body">
-              Med AI kan en lärare utan programmeringsvana göra en egen interaktiv simulering
-              till sin undervisning. Ni går hem med en simulering som fungerar i webbläsaren
-              och som eleverna kan använda direkt.
-            </p>
-            <a class="btn btn--primary" href="/workshop-interaktiva-simuleringar/">Mer information</a>
+            <div class="offer__media">
+              <img src="/media/simuleringar.jpg" width="1200" height="900" loading="lazy"
+                   alt="Illustration till en simulering av rovdjur och bytesdjur: en räv, en hare och en populationskurva.">
+            </div>
+            <div>
+              <p class="offer__kind">Workshop</p>
+              <h3 class="offer__title">Interaktiva simuleringar</h3>
+              <ul class="chips"><li>2–4 timmar</li><li>Ta med dator</li></ul>
+              <p class="offer__body">
+                Med AI kan en lärare utan programmeringsvana göra en egen interaktiv simulering
+                till sin undervisning. Ni går hem med en simulering som fungerar i webbläsaren
+                och som eleverna kan använda direkt.
+              </p>
+              <a class="btn btn--primary" href="/workshop-interaktiva-simuleringar/">Mer information</a>
+            </div>
           </article>
 
         </div>
       </div>
     </section>
 
-    <section class="band" id="om-mig">
-      <div class="band__inner split">
+    <section class="band band--tint" id="om-mig">
+      <div class="band__inner about">
+        <div class="about__portrait">
+          <img src="/media/vidar.jpg" width="400" height="500" loading="lazy"
+               alt="Porträtt av Vidar Skogvoll.">
+        </div>
         <div>
           <p class="eyebrow">Om mig</p>
           <h2>Vidar Skogvoll</h2>
-        </div>
-        <div class="prose">
-          <p>
-            Jag är universitetslektor vid Oslo universitet, där jag arbetar med
-            undervisningsutveckling och med hur AI används i naturvetenskaplig utbildning.
-            Jag är fysiker i grunden, med en doktorsexamen i fysik, och har arbetat som
-            gymnasielärare i Oslo.
-          </p>
-          <p>
-            Jag har hållit föreläsningar och kurser om AI för lärare i hela Norge. Jag har
-            också tagit fram <a href="https://aiskilltrees.com">färdighetsträden</a>, en öppen
-            metod för att öva med AI, och samlingen av simuleringar på
-            <a href="https://skolesim.no">skolesim.no</a>. Nu erbjuder jag samma sak till
-            svenska skolor.
-          </p>
+          <div class="prose">
+            <p>
+              Jag är universitetslektor vid Oslo universitet, där jag arbetar med
+              undervisningsutveckling och med hur AI används i naturvetenskaplig utbildning.
+              Jag är fysiker i grunden, med en doktorsexamen i fysik, och har arbetat som
+              gymnasielärare i Oslo.
+            </p>
+            <p>
+              Jag har hållit föreläsningar och kurser om AI för lärare i hela Norge. Jag har
+              också tagit fram <a href="https://aiskilltrees.com">färdighetsträden</a>, en öppen
+              metod för att öva med AI, och samlingen av simuleringar på
+              <a href="https://skolesim.no">skolesim.no</a>. Nu erbjuder jag samma sak till
+              svenska skolor.
+            </p>
+          </div>
         </div>
       </div>
     </section>

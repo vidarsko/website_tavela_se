@@ -1,0 +1,247 @@
+/* ==========================================================================
+   components.css — header, buttons, offer cards, fact list, footer.
+   Loads after base.css. Tokens only.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Site header — full-bleed bar, gutter on the contents only. Two links, so
+   it wraps on a phone instead of collapsing into a menu button.
+   -------------------------------------------------------------------------- */
+
+.siteheader {
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.siteheader__inner {
+  max-width: var(--measure-wide);
+  margin-inline: auto;
+  padding: var(--space-2) var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-3);
+}
+
+.wordmark {
+  font-family: var(--font-sans);
+  font-size: var(--step-l);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.wordmark:hover { color: var(--primary); }
+
+.sitenav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--step-s);
+  font-weight: 500;
+}
+.sitenav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.sitenav a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+/* --------------------------------------------------------------------------
+   Intro — the short band above the offers. Kept low on purpose: the offers
+   have to be visible without scrolling.
+   -------------------------------------------------------------------------- */
+
+.intro { padding-block: var(--space-4) var(--space-3); }
+.intro h1 { font-size: var(--step-xl); letter-spacing: -0.01em; margin-bottom: var(--space-1); }
+.intro .lede { font-size: var(--step-m); max-width: none; }
+.intro + .band { padding-top: var(--space-4); }
+
+/* --------------------------------------------------------------------------
+   Buttons — square, sans, 500. No radius anywhere in this system.
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: var(--step-s);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: var(--ink-inverse);
+}
+.btn--primary:hover { background: var(--primary-strong); color: var(--ink-inverse); }
+
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: var(--ink);
+}
+.btn--ghost:hover { background: var(--ink); color: var(--ink-inverse); }
+
+/* On a dark or primary band the pair inverts. */
+.band--dark .btn--primary,
+.band--primary .btn--primary {
+  background: var(--ink-inverse);
+  color: var(--ink);
+}
+.band--dark .btn--primary:hover,
+.band--primary .btn--primary:hover {
+  background: var(--surface);
+  color: var(--primary-strong);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   Offer cards — the three offers on the front page. Square, flush, the 1px
+   gap is the hairline. Unlike aiskilltrees' tiles the card itself is not a
+   link: the "Mer information" button is the one target, so the card does
+   not change colour on hover.
+   -------------------------------------------------------------------------- */
+
+.offers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+@media (min-width: 1024px) {
+  .offers { grid-template-columns: repeat(3, 1fr); }
+}
+
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface);
+}
+
+.offer__kind {
+  font-size: var(--step-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0;
+}
+
+.offer__title {
+  font-size: var(--step-l);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.offer__meta {
+  font-size: var(--step-xs);
+  color: var(--ink-3);
+  margin: 0;
+}
+
+.offer__body {
+  font-family: var(--font-serif);
+  font-size: var(--step-s);
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 var(--space-3);
+}
+
+/* margin-top:auto pins the button to the bottom, so the three line up
+   side by side whatever the length of each description. */
+.offer > .btn { margin-top: auto; align-self: flex-start; }
+
+/* --------------------------------------------------------------------------
+   About — a portrait-free two-column band: heading left, prose right.
+   -------------------------------------------------------------------------- */
+
+.split {
+  display: grid;
+  gap: var(--space-4);
+}
+@media (min-width: 1024px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+}
+
+/* --------------------------------------------------------------------------
+   Facts — the short key/value list at the top of each offer page.
+   -------------------------------------------------------------------------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: var(--space-4) 0 0;
+}
+.facts div { background: var(--surface); padding: var(--space-3); }
+.facts dt {
+  font-size: var(--step-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin: 0 0 var(--space-1);
+}
+.facts dd { margin: 0; font-weight: 500; }
+
+/* Lists inside prose keep the serif and the measure. */
+.prose ul, .prose ol { padding-left: 1.25em; margin: 0 0 var(--space-3); }
+.prose li { margin-bottom: var(--space-1); }
+.prose h2 { margin-top: var(--space-5); }
+.prose h2:first-child { margin-top: 0; }
+
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 500;
+  margin-bottom: var(--space-3);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.sitefooter {
+  font-size: var(--step-xs);
+  padding-block: var(--space-5);
+}
+
+.sitefooter__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sitefooter p { margin: 0; opacity: 0.8; }
+.sitefooter a { color: var(--ink-inverse); }

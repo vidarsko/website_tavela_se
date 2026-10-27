@@ -117,15 +117,46 @@
 }
 
 /* --------------------------------------------------------------------------
-   Hero — a green band with the headline, like aiskilltrees.com's but
-   without media behind it: the video sits right under it instead and
-   overlaps its bottom edge, so the extra bottom padding is room for that.
+   Hero — a photo of Vidar teaching behind a green scrim, like
+   aiskilltrees.com's. The video sits right under it and overlaps its
+   bottom edge, so the extra bottom padding is room for that.
    -------------------------------------------------------------------------- */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   padding-top: var(--space-band);
   padding-bottom: calc(var(--space-band) + clamp(4rem, 14vw, 12rem));
 }
+
+/* On a phone the photo fills the band under a dense scrim. From 900px it
+   covers only the right part, so Vidar stands beside the headline rather
+   than behind it, and the scrim fades from solid green into the photo. */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim-strong);
+}
+
+@media (min-width: 900px) {
+  .hero__bg { left: auto; width: 55%; }
+  .hero__scrim {
+    background: linear-gradient(90deg,
+      var(--primary) 0%, var(--primary) 45%,
+      var(--scrim-mid) 62%, var(--scrim-weak) 100%);
+  }
+}
+
+.hero__inner { position: relative; }
 
 .hero h1 {
   font-size: var(--step-3xl);
@@ -147,7 +178,9 @@
    Video — pulled up over the hero's bottom edge.
    -------------------------------------------------------------------------- */
 
-.showreel { padding-block: 0; }
+/* Positioned so it paints above the hero it overlaps, and transparent so
+   its own ground does not cover the hero beside the frame. */
+.showreel { padding-block: 0; position: relative; z-index: 1; background: transparent; }
 
 .showreel__frame {
   margin-top: calc(-1 * clamp(4rem, 14vw, 12rem));

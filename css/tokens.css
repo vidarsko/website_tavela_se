@@ -35,6 +35,9 @@
   --primary:        #1E4D43;  /* hero, contact band, buttons — 9.6:1 on white */
   --primary-strong: #153A32;  /* hover/active */
   --primary-tint:   #E6EFEB;  /* the "Om mig" band */
+  --scrim-strong:   rgba(30, 77, 67, 0.92);   /* --primary over the hero photo */
+  --scrim-mid:      rgba(30, 77, 67, 0.6);
+  --scrim-weak:     rgba(30, 77, 67, 0.1);
 
   /* ---- Accent: terracotta ----------------------------------------------- */
   --accent:         #B4492A;  /* eyebrows and small marks — 5.0:1 on --paper */

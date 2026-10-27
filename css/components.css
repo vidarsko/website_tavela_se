@@ -118,15 +118,15 @@
 
 /* --------------------------------------------------------------------------
    Hero — a photo of Vidar teaching behind a green scrim, like
-   aiskilltrees.com's. The video sits right under it and overlaps its
-   bottom edge, so the extra bottom padding is room for that.
+   aiskilltrees.com's. When the video is back under it, add
+   clamp(4rem, 14vw, 12rem) to the bottom padding: that is the room the
+   video frame overlaps.
    -------------------------------------------------------------------------- */
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: var(--space-band);
-  padding-bottom: calc(var(--space-band) + clamp(4rem, 14vw, 12rem));
+  padding-block: var(--space-band);
 }
 
 /* On a phone the photo fills the band under a dense scrim. From 900px it
@@ -175,7 +175,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   Video — pulled up over the hero's bottom edge.
+   Video — pulled up over the hero's bottom edge. Not on the page until the
+   video exists; see the comment in index.html.
    -------------------------------------------------------------------------- */
 
 /* Positioned so it paints above the hero it overlaps, and transparent so
@@ -203,9 +204,6 @@
    the other. Every second row puts the photo on the right. On a phone the
    photo goes above the text.
    -------------------------------------------------------------------------- */
-
-.section-head { margin-bottom: var(--space-5); }
-.section-head h2 { margin-bottom: 0; }
 
 .offers {
   display: grid;

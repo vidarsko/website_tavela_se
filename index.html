@@ -31,9 +31,9 @@
   <main>
 
     <!--
-      Hero, then the video, then one row per offer. Vidar asked for this on
-      2026-10-27 in place of the first version's low intro band, accepting
-      that the offers now need a scroll.
+      Hero, then one row per offer (the video goes between them once it
+      exists). Vidar asked for this on 2026-10-27 in place of the first
+      version's low intro band, accepting that the offers now need a scroll.
     -->
     <section class="band band--primary hero">
       <img class="hero__bg" src="/media/hero.jpg" width="1371" height="912" alt="">
@@ -53,30 +53,27 @@
     </section>
 
     <!--
-      The video of clips from talks and workshops is not made yet. Until it
-      is, the frame holds a still. When the file exists, replace the <img>
-      with:
-        <video controls playsinline preload="metadata" poster="/media/showreel.jpg">
-          <source src="/media/showreel.mp4" type="video/mp4">
-        </video>
+      The video of clips from talks and workshops goes here, between the
+      hero and the offers, once it exists. A still in its place looked
+      like a stray poster, so the section was taken out until then. Markup
+      to put back (the .showreel styles are still in components.css; give
+      .hero its overlap padding back too, see the comment there):
+        <section class="band showreel" aria-label="Video">
+          <div class="band__inner">
+            <div class="showreel__frame">
+              <video controls playsinline preload="metadata" poster="/media/showreel.jpg">
+                <source src="/media/showreel.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </section>
       Self-hosted on purpose: a YouTube embed would break the privacy page's
       promise of no third-party calls besides GoatCounter.
     -->
-    <section class="band showreel" aria-label="Video">
-      <div class="band__inner">
-        <div class="showreel__frame">
-          <img src="/media/showreel.jpg" width="1280" height="720"
-               alt="Vidar Skogvoll bredvid ett färdighetsträd, ur en video om metoden.">
-        </div>
-      </div>
-    </section>
 
     <section class="band" id="erbjudanden">
       <div class="band__inner">
-        <div class="section-head">
-          <p class="eyebrow">Erbjudanden</p>
-          <h2>En föreläsning och två workshoppar</h2>
-        </div>
+        <h2 class="visually-hidden">Erbjudanden</h2>
 
         <div class="offers">
 

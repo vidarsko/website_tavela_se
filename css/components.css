@@ -25,7 +25,9 @@
   gap: var(--space-1) var(--space-3);
 }
 
-/* Text wordmark until Vidar has a logo. The dot is the accent, nothing more. */
+/* Vidar's name is the big one, Tavela the small mark beside it (Pauline's
+   point that a school books him, not a brand). Text until there is a logo;
+   the dot is the accent, nothing more. */
 .wordmark {
   font-family: var(--font-sans);
   font-size: var(--step-l);
@@ -34,8 +36,15 @@
   color: var(--primary);
   text-decoration: none;
 }
-.wordmark::after { content: "."; color: var(--accent); }
 .wordmark:hover { color: var(--primary-strong); }
+.wordmark__brand {
+  font-size: var(--step-s);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-3);
+  margin-left: 0.35em;
+}
+.wordmark__brand::after { content: "."; color: var(--accent); }
 
 .sitenav {
   display: flex;
@@ -267,11 +276,77 @@
   line-height: 1.6;
   color: var(--ink-2);
   max-width: 52ch;
+  margin: 0 0 var(--space-2);
+}
+
+.offer__result {
+  font-size: var(--step-m);
+  line-height: 1.6;
+  max-width: 52ch;
   margin: 0 0 var(--space-4);
+}
+.offer__result strong { color: var(--primary); font-weight: 600; }
+
+.tailor {
+  margin: var(--space-band) 0 0;
+  text-align: center;
+  font-size: var(--step-l);
+  font-weight: 600;
+  color: var(--primary);
+  text-wrap: balance;
 }
 
 /* --------------------------------------------------------------------------
-   About — portrait left, text right, on the tinted band.
+   Quotes — three cards on the tinted band, then the credentials.
+   -------------------------------------------------------------------------- */
+
+.quotes {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-2) 0 var(--space-3);
+}
+@media (min-width: 900px) {
+  .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.quotes blockquote {
+  margin: 0;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  font-family: var(--font-serif);
+  font-size: var(--step-m);
+  line-height: 1.55;
+}
+.quotes blockquote::before {
+  content: "\201D";
+  display: block;
+  font-size: 2.5em;
+  line-height: 0.6;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+
+.quotes__source {
+  font-size: var(--step-xs);
+  color: var(--ink-3);
+  margin-bottom: var(--space-4);
+}
+
+.credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+.credentials li::before { content: "\2713\00a0"; color: var(--primary); font-weight: 700; }
+
+/* --------------------------------------------------------------------------
+   About — portrait left, text right. Short on purpose.
    -------------------------------------------------------------------------- */
 
 .about {

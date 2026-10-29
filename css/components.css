@@ -314,7 +314,8 @@
   background: var(--surface);
   border-radius: var(--radius);
   padding: var(--space-4);
-  font-family: var(--font-serif);
+  /* Sans like the rest of the page: in serif the quotes read as Times
+     New Roman (Pauline, 2026-10-27). */
   font-size: var(--step-m);
   line-height: 1.55;
 }
@@ -333,10 +334,11 @@
   margin-bottom: var(--space-4);
 }
 
+/* One per line: the ETUCE item is a full sentence and wraps badly in a row. */
 .credentials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1) var(--space-4);
+  display: grid;
+  gap: var(--space-1);
+  max-width: 68ch;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -366,6 +368,27 @@
   background: var(--surface);
 }
 .about__portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+/* The teacher count under "Om mig" (Pauline's wish, 2026-10-29). */
+.stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  max-width: 34rem;
+  background: var(--primary-tint);
+  border-radius: var(--radius);
+}
+.stat__num {
+  flex: none;
+  font-size: var(--step-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--primary);
+}
+.stat__text { color: var(--ink-2); line-height: 1.4; }
 
 .about .prose { font-family: var(--font-sans); color: var(--ink-2); }
 

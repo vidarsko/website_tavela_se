@@ -279,25 +279,19 @@
   margin: 0 0 var(--space-2);
 }
 
+/* "Ni får:" ends .offer__body, and the bullets sit on the same left edge
+   as its text (Vidar, 2026-10-30). */
 .offer__result {
   font-size: var(--step-m);
   line-height: 1.6;
   max-width: 52ch;
+  list-style: none;
+  padding: 0;
   margin: 0 0 var(--space-4);
 }
-.offer__result strong { color: var(--primary); font-weight: 600; }
-.offer__result p { margin: 0; }
-.offer__result ul { margin: var(--space-1) 0 0; padding-left: 1.2em; }
+.offer__result li { padding-left: 1em; text-indent: -1em; }
+.offer__result li::before { content: "\2022"; display: inline-block; width: 1em; text-indent: 0; color: var(--primary); }
 .offer__result li + li { margin-top: var(--space-1); }
-
-.tailor {
-  margin: var(--space-band) 0 0;
-  text-align: center;
-  font-size: var(--step-l);
-  font-weight: 600;
-  color: var(--primary);
-  text-wrap: balance;
-}
 
 /* --------------------------------------------------------------------------
    Quotes — two cards on the tinted band, then the teacher count.
@@ -331,11 +325,6 @@
   margin-bottom: var(--space-2);
 }
 
-.quotes__source {
-  font-size: var(--step-xs);
-  color: var(--ink-3);
-  margin-bottom: var(--space-4);
-}
 
 /* Under "Om mig", each with a bold lead (Pauline, 2026-10-29). One per
    line: the ETUCE item is a full sentence and wraps badly in a row. */

@@ -26,9 +26,13 @@
 }
 
 /* Vidar's name is the big one, Tavela the small mark beside it (Pauline's
-   point that a school books him, not a brand). Text until there is a logo;
-   the dot is the accent, nothing more. */
+   point that a school books him, not a brand). The logo is the favicon's
+   easel (from 2026-11-22), sitting before the name; the dot is the accent,
+   nothing more. */
 .wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45em;
   font-family: var(--font-sans);
   font-size: var(--step-l);
   font-weight: 700;
@@ -37,12 +41,17 @@
   text-decoration: none;
 }
 .wordmark:hover { color: var(--primary-strong); }
+.wordmark__logo {
+  align-self: center;
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+}
 .wordmark__brand {
   font-size: var(--step-s);
   font-weight: 600;
   letter-spacing: 0;
   color: var(--ink-3);
-  margin-left: 0.35em;
 }
 .wordmark__brand::after { content: "."; color: var(--accent); }
 
